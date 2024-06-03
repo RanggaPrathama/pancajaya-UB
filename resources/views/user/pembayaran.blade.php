@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <form action="{{route('pembayaran.store')}}" method="POST">
+                <form action="{{route('pembayaran.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                 <div class="form-group">
                     <label for="name">Nama:</label>

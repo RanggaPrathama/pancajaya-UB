@@ -48,10 +48,9 @@ class PembayaranController extends Controller
         ]);
 
         if($request->hasFile('buktiBayar')){
-            $file = $request->file('buktiBayar');
-            $nama_file = time()."_".$file->getClientOriginalName();
-            $file->move(public_path('bukti'),$nama_file);
-            $validatedData["buktiBayar"] = $nama_file;
+            $gambar = $request->file('buktiBayar')->getClientOriginalName();
+            $request->file('buktiBayar')->move(public_path('bukti'),$gambar);
+            $validatedData["buktiBayar"] = $gambar;
         }
 
         $pembayaran = DB::table('pembayarans')->insert([
@@ -77,7 +76,7 @@ class PembayaranController extends Controller
 
     public function laporanTransaksi(){
         $pembayarans = DB::table('pembayarans')
-        ->select('pembayarans.created_at', 'pembayarans.totalPembayaran','users.name')
+        ->select('pembayarans.created_at', 'pembayarans.totalPembayaran','users.name','pembayarans.buktiBayar','users.alamat','users.no_hp')
         ->join('pemesanans','pemesanans.id_pemesanan','=','pembayarans.id_pemesanan')
         ->join('users','users.id_user','=','pemesanans.id_user')
         ->get();

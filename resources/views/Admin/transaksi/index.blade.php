@@ -36,6 +36,9 @@
                                     <th scope="col">No order</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Atas Nama</th>
+                                    <th scope="col"> Alamat</th>
+                                    <th scope="col"> No HP</th>
+                                    <th scope="col"> bukti bayar</th>
                                     <th scope="col"> Total Transaksi</th>
 
                                 </tr>
@@ -47,6 +50,9 @@
                                         <th scope="row">{{ $noId++ }}</th>
                                         <td>{{ $pembayaran->created_at }}</td>
                                         <td> {{$pembayaran->name}}</td>
+                                        <td>{{$pembayaran->alamat}}</td>
+                                        <td>{{$pembayaran->no_hp}}</td>
+                                        <td><a href="{{asset('bukti/'.$pembayaran->buktiBayar)}}"><button class="btn btn-primary">Lihat Bukti</button></a></td>
                                         <td>{{$pembayaran->totalPembayaran}}</td>
 
 
